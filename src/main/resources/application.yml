@@ -15,14 +15,14 @@ spring:
       
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/seeca?serverTimezone=Asia/Seoul
-    username: seeca
-    password: seeca1234
+    url: jdbc:mysql://springboot-db.chfbh3lvfdtg.us-east-2.rds.amazonaws.com:3306/seeca?serverTimezone=Asia/Seoul
+    username: admin
+    password: 12345678
     
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       #ddl-auto : create해놓으면 프로젝트 실행할때마다 테이블이 생성이된다.
       
       naming:
