@@ -3,7 +3,7 @@
 	
 <%@ include file="../layout/header.jsp"%>
 
-
+<h1 style="text-align:center">Sign In</h1>
 <div class="container">
 	 <form action="/auth/loginProc" method="POST">
 		  <div class="form-group">
@@ -17,7 +17,7 @@
 		    <input type="password" name="password" class="form-control" placeholder="Enter password" id="password">
 		  </div>
 		  
-		    <button id="btn-login" class="btn btn-primary">로그인완료</button>
+		    <button id="btn-login" class="btn btn-primary">Sign In</button>
 	</form>
 			
 		

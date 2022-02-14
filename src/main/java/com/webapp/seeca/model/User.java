@@ -32,7 +32,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; // Jpa가 사용하는 auto_increment
 	
-	@Column(name = "username", nullable = false, length = 100)
+	@Column(name = "username", nullable = false, length = 100, unique = true)
 	private String username; // 아이디생성
 	
 	@Column(nullable = false, length = 100)
@@ -41,7 +41,6 @@ public class User {
 	@Column(name = "email", nullable = false, length = 50)
 	private String email; // 이메일
 	
-	//private String symptom; // 증상
 	
 	@Enumerated(EnumType.STRING)
 	private RoleType role; // 일반유저, 프리미엄유저, 어드민유저

@@ -18,7 +18,6 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
-	
 	@Transactional
 	public void 회원가입(User user) {
 		String rawPassword = user.getPassword();
@@ -26,6 +25,7 @@ public class UserService {
 		user.setPassword(encPassword);
 		user.setRole(RoleType.P_USER);
 		userRepository.save(user);
+		
 	}
 	
 	@Transactional

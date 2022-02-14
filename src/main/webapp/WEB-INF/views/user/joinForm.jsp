@@ -4,6 +4,7 @@
 <%@ include file="../layout/header.jsp"%>
 
 
+<h1 style="text-align:center">Sign Up</h1>
 <div class="container">
 	 <form>
 		  <div class="form-group">
@@ -22,7 +23,7 @@
 		  </div>
 		  
 	</form>
-			  <button id="btn-save" class="btn btn-primary">회원가입완료</button>
+			  <button id="btn-save" class="btn btn-primary">Complete</button>
 		
 </div>
 <script src ="/js/user.js"></script>

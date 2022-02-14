@@ -3,6 +3,7 @@ package com.webapp.seeca.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,6 +19,8 @@ import javax.persistence.OrderBy;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,6 +44,7 @@ public class Board {
 	@Lob
 	private String content; //내용
 	
+	
 	@Column(name = "count")
 	@ColumnDefault("0") 
 	private int count; // 게시글 조회수
@@ -61,8 +65,9 @@ public class Board {
 	
 	// One = board, Many = reply
 	// 연관관계의 주인이아니다. 
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@OrderBy("id desc")
+	@JsonIgnoreProperties({"board"})
 	private List<Reply> replys;
 	
 	@CreationTimestamp

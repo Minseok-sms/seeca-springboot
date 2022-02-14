@@ -5,8 +5,8 @@
 
 
 <div class="container">
+	<h1 style="text-align:center">Modify Profile</h1>
 	 <form>
-	 
 	 	  <input type = "hidden" id ="id" value = "${principal.user.id}"/>
 		  <div class="form-group">
 		    <label for="username">Username</label>
@@ -23,8 +23,21 @@
 		    <input type="email" value ="${principal.user.email}" class="form-control" placeholder="Enter email" id="email">
 		  </div>
 		  
+		  <div class="form-group">
+		    <label for="email">Your Status</label>
+		    <c:choose>
+		    	<c:when test="${principal.user.role == 'USER' }">
+		    		 <input type="text" value ="user" class="form-control" placeholder="Enter status" id="role" readonly>
+		    	</c:when>
+		    	<c:otherwise>
+		    		 <input type="text" value ="Pro user" class="form-control" placeholder="Enter status" id="role" readonly>
+		    	</c:otherwise>
+		    </c:choose>
+		   
+		  </div>
+		  
 	</form>
-			  <button id="btn-update" class="btn btn-primary">회원수정완료</button>
+			  <button id="btn-update" class="btn btn-primary">update</button>
 		
 </div>
 <script src ="/js/user.js"></script>

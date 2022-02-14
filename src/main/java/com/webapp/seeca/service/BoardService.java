@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.seeca.model.Board;
+import com.webapp.seeca.model.Reply;
 import com.webapp.seeca.model.RoleType;
 import com.webapp.seeca.model.User;
 import com.webapp.seeca.repository.BoardRepository;
+import com.webapp.seeca.repository.ReplyRepository;
 import com.webapp.seeca.repository.UserRepository;
 
 
@@ -23,6 +25,9 @@ public class BoardService {
 
 	@Autowired
 	private BoardRepository boardRepository;
+	
+	@Autowired
+	private ReplyRepository replyRepository;
 	
 	@Transactional
 	public void 글쓰기(Board board, User user) {
@@ -66,6 +71,23 @@ public class BoardService {
 		
 		// 이함수가 종료되면서 영속성컨텍스트에 데이터가 변경되었다고 감지 -> 더티채킹
 		// 더티채킹이발생하면 자동으로 영속성컨텍스트에 데이터바뀌고 db에 저장시켜준다.
+	}
+	
+	@Transactional
+	public void 댓글쓰기(User user, int boardId, Reply requestReply) {
+		
+		Board board = boardRepository.findById(boardId).orElseThrow(()->{
+			return new IllegalArgumentException("댓글 쓰기 실패  : 게시글 id를 찾을 수 없습니다.");
+		});
+		requestReply.setUser(user);
+		requestReply.setBoard(board);
+		
+		replyRepository.save(requestReply);
+	}
+	
+	@Transactional
+	public void 댓글삭제(int replyId) {
+		replyRepository.deleteById(replyId);
 	}
 	
 	

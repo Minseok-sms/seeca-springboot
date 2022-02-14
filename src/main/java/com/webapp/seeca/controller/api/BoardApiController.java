@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webapp.seeca.auth.PrincipalDetail;
 import com.webapp.seeca.dto.ResponseDto;
 import com.webapp.seeca.model.Board;
+import com.webapp.seeca.model.Reply;
 import com.webapp.seeca.model.User;
 import com.webapp.seeca.service.BoardService;
 import com.webapp.seeca.service.UserService;
@@ -45,6 +46,21 @@ public class BoardApiController {
 	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board){
 		boardService.글수정하기(id, board);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	
+	@PostMapping("/api/board/{boardId}/reply")
+	public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal) {
+		
+		boardService.댓글쓰기(principal.getUser(),boardId, reply);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1); 
+	}
+	
+	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
+	public ResponseDto<Integer> replyDelete(@PathVariable int replyId) {
+		boardService.댓글삭제(replyId);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1); 
+		
 	}
 
 }

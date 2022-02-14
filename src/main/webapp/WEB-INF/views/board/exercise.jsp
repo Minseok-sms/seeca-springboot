@@ -6,7 +6,7 @@
 
 <div class="container">
 	
-			<h1>프리미엄 페이지</h1>
+			<h1>마켓페이지</h1>
 		
 </div>
 

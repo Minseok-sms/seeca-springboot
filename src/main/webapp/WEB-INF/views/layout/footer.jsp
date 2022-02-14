@@ -8,13 +8,12 @@
 		<c:otherwise>
 				<div class="jumbotron text-center" style="margin-bottom:0">
 				<p>✅ @@@@@@광고 배너 넣는곳 @@@@@@@✅</p>
+				</div>
 		</c:otherwise>
 	</c:choose>
     
  	  
     
-</div>
-
 
 </body>
 </html>
